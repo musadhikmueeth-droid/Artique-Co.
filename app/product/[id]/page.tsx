@@ -20,17 +20,15 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in-up">
-      {/* Back button */}
       <Link href="/shop" className="btn-back mb-8 inline-flex">
         ← Back to Shop
       </Link>
 
       <div className="grid md:grid-cols-2 gap-10">
-        {/* Image */}
         <div className="glass overflow-hidden animate-fade-in-up delay-100">
-          {p.image_url ? (
+          {p.img_url ? (
             <img
-              src={p.image_url}
+              src={p.img_url}
               alt={p.name}
               className="w-full h-80 object-cover rounded-2xl hover:scale-105 transition-transform duration-500"
             />
@@ -41,7 +39,6 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
           )}
         </div>
 
-        {/* Details */}
         <div className="flex flex-col justify-center gap-6 animate-fade-in-up delay-200">
           <div>
             <p className="text-[#94a3b8] tracking-widest uppercase text-xs mb-2 font-medium">{p.category}</p>

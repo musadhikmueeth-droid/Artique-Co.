@@ -11,7 +11,6 @@ export default async function ShopPage() {
 
   return (
     <div>
-      {/* Header */}
       <div className="mb-10 animate-fade-in-up">
         <Link href="/" className="btn-back mb-4 inline-flex">
           ← Back to Home
@@ -44,9 +43,9 @@ export default async function ShopPage() {
             className="glass group hover:border-[#94a3b8]/40 transition-all duration-300 overflow-hidden hover:scale-[1.02] hover:shadow-lg hover:shadow-[#94a3b8]/5 animate-fade-in-up"
             style={{ animationDelay: `${i * 0.08}s`, opacity: 0 }}
           >
-            {product.image_url ? (
+            {product.img_url ? (
               <img
-                src={product.image_url}
+                src={product.img_url}
                 alt={product.name}
                 className="w-full h-56 object-cover rounded-t-2xl group-hover:scale-105 transition-transform duration-500"
               />
