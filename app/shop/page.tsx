@@ -1,7 +1,7 @@
 import { supabase, type Product } from '@/lib/supabase';
 import Link from 'next/link';
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 export default async function ShopPage() {
   const { data: products, error } = await supabase
@@ -21,7 +21,7 @@ export default async function ShopPage() {
 
       {error && (
         <div className="glass p-6 text-center text-red-400 animate-fade-in">
-          <p>Could not load products. Check your Supabase connection.</p>
+          <p>Could not load products.</p>
           <p className="text-sm text-white/40 mt-1">{error.message}</p>
         </div>
       )}

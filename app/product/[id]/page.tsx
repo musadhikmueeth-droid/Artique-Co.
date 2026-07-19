@@ -3,7 +3,7 @@ import AddToCartButton from './AddToCartButton';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -53,12 +53,14 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             </span>
           </div>
 
-          <div className="flex items-center gap-2 text-sm">
-            <span className={`w-2 h-2 rounded-full ${p.stock > 0 ? 'bg-emerald-400' : 'bg-red-400'} shadow-lg`} />
-            <span className="text-[#94a3b8]">
-              {p.stock > 0 ? `${p.stock} in stock` : 'Out of stock'}
-            </span>
-          </div>
+          {p.stock !== undefined && (
+            <div className="flex items-center gap-2 text-sm">
+              <span className={`w-2 h-2 rounded-full ${p.stock > 0 ? 'bg-emerald-400' : 'bg-red-400'} shadow-lg`} />
+              <span className="text-[#94a3b8]">
+                {p.stock > 0 ? `${p.stock} in stock` : 'Out of stock'}
+              </span>
+            </div>
+          )}
 
           <AddToCartButton product={p} />
         </div>
