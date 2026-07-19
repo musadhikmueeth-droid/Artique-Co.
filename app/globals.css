@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0f172a;
+  --accent: #94a3b8;
+}
+
+body {
+  background-color: #0f172a;
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+  .glass-dark {
+    @apply bg-black/30 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+  .btn-primary {
+    @apply bg-[#94a3b8] text-[#0f172a] font-semibold px-6 py-3 rounded-xl hover:bg-white transition-all duration-200;
+  }
+  .btn-outline {
+    @apply border border-[#94a3b8] text-[#94a3b8] font-semibold px-6 py-3 rounded-xl hover:bg-[#94a3b8] hover:text-[#0f172a] transition-all duration-200;
+  }
+}
