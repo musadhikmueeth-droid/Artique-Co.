@@ -12,57 +12,55 @@ export default async function ShopPage() {
   return (
     <div>
       <div className="mb-10 animate-fade-in-up">
-        <Link href="/" className="btn-back mb-4 inline-flex">
-          ← Back to Home
-        </Link>
-        <p className="text-[#94a3b8] tracking-widest uppercase text-xs mb-2 font-medium">Collection</p>
-        <h1 className="text-4xl font-bold gradient-text">Our Products</h1>
+        <Link href="/" className="btn-back">← Back to Home</Link>
+        <p className="text-[#475569] tracking-[0.3em] uppercase text-xs mb-2 font-medium">Collection</p>
+        <h1 className="luxury-text text-4xl md:text-5xl font-bold gradient-text">Our Products</h1>
       </div>
 
       {error && (
-        <div className="glass p-6 text-center text-red-400 animate-fade-in">
-          <p>Could not load products.</p>
-          <p className="text-sm text-white/40 mt-1">{error.message}</p>
+        <div className="glass p-6 text-center border-red-500/20 animate-fade-in">
+          <p className="text-red-400 font-medium">Could not load products.</p>
+          <p className="text-[#334155] text-sm mt-1">{error.message}</p>
         </div>
       )}
 
       {!error && (!products || products.length === 0) && (
-        <div className="glass p-12 text-center animate-fade-in">
-          <p className="text-[#94a3b8] text-lg">No products found.</p>
-          <p className="text-white/30 text-sm mt-2">
-            Add rows to the <code className="text-[#94a3b8]">products</code> table in Supabase.
-          </p>
+        <div className="glass p-16 text-center animate-fade-in">
+          <p className="text-[#64748b] text-lg">No products available yet.</p>
+          <p className="text-[#334155] text-sm mt-2">Check back soon for our curated collection.</p>
         </div>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {(products as Product[])?.map((product, i) => (
           <Link
             key={product.id}
             href={`/product/${product.id}`}
-            className="glass group hover:border-[#94a3b8]/40 transition-all duration-300 overflow-hidden hover:scale-[1.02] hover:shadow-lg hover:shadow-[#94a3b8]/5 animate-fade-in-up"
-            style={{ animationDelay: `${i * 0.08}s`, opacity: 0 }}
+            className="glass group hover:border-[#94a3b8]/20 transition-all duration-400 overflow-hidden hover:scale-[1.02] hover:shadow-xl hover:shadow-black/40 animate-fade-in-up"
+            style={{ animationDelay: `${i * 0.07}s`, opacity: 0 }}
           >
-            {product.img_url ? (
-              <img
-                src={product.img_url}
-                alt={product.name}
-                className="w-full h-56 object-cover rounded-t-2xl group-hover:scale-105 transition-transform duration-500"
-              />
-            ) : (
-              <div className="w-full h-56 bg-gradient-to-br from-white/5 to-white/10 flex items-center justify-center rounded-t-2xl">
-                <span className="text-white/20 text-5xl">◈</span>
-              </div>
-            )}
+            <div className="overflow-hidden rounded-t-2xl">
+              {product.img_url ? (
+                <img
+                  src={product.img_url}
+                  alt={product.name}
+                  className="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-600"
+                />
+              ) : (
+                <div className="w-full h-52 bg-gradient-to-br from-[#0f172a] to-[#1e293b] flex items-center justify-center">
+                  <span className="text-[#1e293b] text-6xl">◈</span>
+                </div>
+              )}
+            </div>
             <div className="p-5">
-              <p className="text-[#94a3b8] text-xs tracking-widest uppercase mb-1">{product.category}</p>
-              <h2 className="text-white font-semibold text-lg">{product.name}</h2>
-              <p className="text-white/50 text-sm mt-1 line-clamp-2">{product.description}</p>
-              <div className="flex items-center justify-between mt-3">
-                <p className="text-white font-bold text-xl">
+              <p className="text-[#475569] text-xs tracking-[0.2em] uppercase mb-1 font-medium">{product.category}</p>
+              <h2 className="text-white font-semibold text-base leading-snug">{product.name}</h2>
+              <p className="text-[#334155] text-xs mt-1.5 line-clamp-2 leading-relaxed">{product.description}</p>
+              <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/[0.05]">
+                <p className="text-white font-bold text-lg">
                   LKR {product.price?.toLocaleString()}
                 </p>
-                <span className="text-[#94a3b8] text-xs group-hover:translate-x-1 transition-transform duration-200">
+                <span className="text-[#475569] text-xs group-hover:text-[#94a3b8] group-hover:translate-x-1 transition-all duration-200 uppercase tracking-wider">
                   View →
                 </span>
               </div>
